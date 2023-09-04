@@ -1,0 +1,268 @@
+body::after {
+    content: "";
+    background-image: url('./assets/background-site.jpg'); /* Substitua pelo caminho da sua imagem de background */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Coloca o plano de fundo atrás de tudo */
+    opacity: 0.5; /* Define a opacidade do plano de fundo, se desejar */
+}
+
+body {
+    font-family: Tahoma, Arial, sans-serif;
+    /* Resto do seu CSS aqui */
+}
+
+
+
+header {
+    background: linear-gradient(to right, #1e2a78 70%, #3c97c8);
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+.header-bar h1 {
+    margin: 0;
+}
+
+.sidebar {
+    width: 150px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to bottom, #1e2a78 60%, #3c97c8);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+}
+
+.sidebar button {
+    list-style: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    text-align: center;
+    justify-content: center;
+    width: 80%;
+    border: none;
+    background-color: #3c97c8;
+    cursor: pointer;
+    color: #fff;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+/* Margem superior maior para o primeiro botão */
+.sidebar button:first-child {
+    margin-top: 200px; /* Ajuste a margem superior para posicionar o primeiro botão mais distante do topo */
+}
+
+.sidebar button:hover {
+    background-color: #2d3b8a; /* Azul escuro mais claro ao passar o mouse */
+    border-radius: 15px;
+    transform: scale(1.1);
+}
+
+#instructions {
+    margin-left: 200px;
+    margin-top: 150px;
+}
+
+#products,
+#add-product,
+#edit {
+    margin-left: 200px;
+    margin-top: 120px;
+}
+
+
+/* Estilos para a tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th,
+table td {
+    padding: 10px;
+    text-align: left;
+}
+
+/* Adicione margem entre títulos e dados */
+table th {
+    margin-bottom: 10px;
+}
+
+/* Estilos para linhas ímpares */
+table tr:nth-child(odd) {
+    background-color: #f2f2f2; /* Cor de fundo para linhas ímpares */
+}
+
+/* Estilos para linhas pares */
+table tr:nth-child(even) {
+    background-color: #ffffff; /* Cor de fundo para linhas pares */
+}
+
+
+.icon{
+    color: #1e2a78;
+    font-size: 17px;
+    margin: 2px;
+    background-color: transparent;
+}
+
+.btn{
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+
+footer {
+    background-color:#3c97c8;
+    color: black;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 0;
+}
+
+.add-btn,
+.cancel-btn{
+    background-color: #1e2a78;
+    color: white;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-right: 5px;
+}
+
+.cancel-btn{
+    background-color: gray;
+}
+
+
+.add-btn:hover,
+.cancel-btn:hover{
+    transform: scale(1.1);
+}
+
+/* Estilos para os campos de entrada */
+#productForm label,
+#edit label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#productForm input[type="text"],
+#productForm input[type="number"],
+#edit input[type="text"],
+#edit input[type="number"] {
+    width: 98%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Estilos para os botões */
+#productForm button.add-btn {
+    background-color: #1e2a78;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#productForm button.cancel-btn {
+    background-color: #ccc;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#productForm button.add-btn:hover,
+#productForm button.cancel-btn:hover {
+    background-color: #2d3b8a; /* Altere a cor ao passar o mouse se desejar */
+}
+
+.table-title-small{
+    display: none;
+}
+
+
+
+
+/* Estilos para telas pequenas */
+@media (max-width: 750px) {
+    .sidebar {
+        width: 60px;
+    }
+
+    .sidebar button {
+        width: 100%;
+        margin-top: 25px;
+        padding: 20px;
+    }
+
+    .iconn{
+        font-size: 25px;
+    }
+
+    .sidebar button .text {
+        display: none;
+    }
+
+    #instructions {
+        margin-left: 100px;
+        margin-top: 130px;
+    }
+    
+    #products,
+    #add-product,
+    #edit {
+        margin-left: 100px;
+        margin-top: 110px;
+    }
+
+    .sidebar button:hover {
+        border-radius: 10px;
+    }
+
+    .table-title-small {
+        display: table-cell; /* Altere de "block" para "table-cell" */
+        width: auto; /* Redefina a largura para o padrão (automático) */
+        padding: 5px; /* Aplique um pouco de espaço interno para alinhar melhor */
+        text-align: center; /* Alinhar o texto ao centro */
+    }
+
+    .table-title-large{
+        display: none;
+    }
+    
+    
+}
+
