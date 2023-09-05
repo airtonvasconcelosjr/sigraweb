@@ -1,3 +1,4 @@
+// scripts.js
 const content = document.getElementById("content");
 
 // Função para carregar produtos do localStorage
@@ -31,7 +32,6 @@ function showInstructions() {
         </div>
     `;
 }
-
 
 function showProducts() {
     content.innerHTML = "";
@@ -82,25 +82,23 @@ function renderProductTable() {
     saveProducts(); // Salvar produtos no localStorage
 }
 
-
-
 function addProductForm() {
     content.innerHTML = `
     <div id="add-product">
         <h1>Adicionar Produto</h1>
-        <form id="productForm">
+        <form id="productForm" onsubmit="return validateProductForm()">
             <label for="fabricante">Fabricante:</label>
-            <input type="text" id="fabricante" required><br>
+            <input type="text" id="fabricante" placeholder="Insira o fabricante do produto" required><br>
             <label for="codigo">Código:</label>
-            <input type="text" id="codigo" required><br>
+            <input type="text" id="codigo" placeholder="Insira o código do produto" required><br>
             <label for="descricao">Descrição:</label>
-            <input type="text" id="descricao" required><br>
+            <input type="text" id="descricao" placeholder="Insira a descrição do produto" required><br>
             <label for="pesoLiquido">Peso Líquido:</label>
-            <input type="number" id="pesoLiquido" required><br>
+            <input type="number" id="pesoLiquido" placeholder="Insira um peso em gramas" required><br>
             <label for="pesoBruto">Peso Bruto:</label>
-            <input type="number" id="pesoBruto" required><br>
+            <input type="number" id="pesoBruto" placeholder="Insira um peso em gramas" required><br>
             <label for="valor">Valor:</label>
-            <input type="number" id="valor" required><br>
+            <input type="number" id="valor" placeholder="Insira o valor em Reais" required><br>
             <button class="add-btn" type="button" onclick="addProduct()">Adicionar</button>
             <button class="cancel-btn" type="button" onclick="renderProductTable()">Cancelar</button>
         </form>
@@ -116,18 +114,68 @@ function addProduct() {
     const pesoBruto = document.getElementById("pesoBruto").value;
     const valor = document.getElementById("valor").value;
 
+    // Verificações
+    if (fabricante.length < 3) {
+        alert("O fabricante deve ter pelo menos 3 caracteres.");
+        return;
+    }
+
+    if (descricao.length < 3) {
+        alert("A descrição deve ter pelo menos 3 caracteres.");
+        return;
+    }
+
+    if (isNaN(pesoLiquido) || isNaN(pesoBruto) || isNaN(valor)) {
+        alert("Os campos numéricos devem conter apenas números.");
+        return;
+    }
+
+    // Converte os campos numéricos para números
+    const pesoLiquidoNumber = parseFloat(pesoLiquido);
+    const pesoBrutoNumber = parseFloat(pesoBruto);
+    const valorNumber = parseFloat(valor);
+
     const newProduct = {
         fabricante,
         codigo,
         descricao,
-        pesoLiquido,
-        pesoBruto,
-        valor
+        pesoLiquido: pesoLiquidoNumber,
+        pesoBruto: pesoBrutoNumber,
+        valor: valorNumber
     };
 
     products.push(newProduct);
     showProducts();
 }
+
+function validateProductForm() {
+    const fabricante = document.getElementById("fabricante").value;
+    const codigo = document.getElementById("codigo").value;
+    const descricao = document.getElementById("descricao").value;
+    const pesoLiquido = document.getElementById("pesoLiquido").value;
+    const pesoBruto = document.getElementById("pesoBruto").value;
+    const valor = document.getElementById("valor").value;
+
+    // Verificações
+    if (fabricante.length < 3) {
+        alert("O fabricante deve ter pelo menos 3 caracteres.");
+        return false; // Impede o envio do formulário
+    }
+
+    if (descricao.length < 3) {
+        alert("A descrição deve ter pelo menos 3 caracteres.");
+        return false; // Impede o envio do formulário
+    }
+
+    if (isNaN(pesoLiquido) || isNaN(pesoBruto) || isNaN(valor)) {
+        alert("Os campos numéricos devem conter apenas números.");
+        return false; // Impede o envio do formulário
+    }
+
+    return true; // Permite o envio do formulário
+}
+
+
 
 function editProductForm(index) {
     content.innerHTML = `
@@ -161,6 +209,22 @@ function updateProduct(index) {
     const pesoBruto = document.getElementById("pesoBruto").value;
     const valor = document.getElementById("valor").value;
 
+    // Verificações
+    if (fabricante.length < 3) {
+        alert("O fabricante deve ter pelo menos 3 caracteres.");
+        return;
+    }
+
+    if (descricao.length < 3) {
+        alert("A descrição deve ter pelo menos 3 caracteres.");
+        return;
+    }
+
+    if (isNaN(pesoLiquido) || isNaN(pesoBruto) || isNaN(valor)) {
+        alert("Os campos numéricos devem conter apenas números.");
+        return;
+    }
+
     const updatedProduct = {
         fabricante,
         codigo,
@@ -187,7 +251,5 @@ const currentYear = new Date().getFullYear();
 
 // Define o ano atual no elemento
 yearElement.textContent = currentYear;
-
-
 
 showProducts();
