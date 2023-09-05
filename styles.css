@@ -253,6 +253,7 @@ footer {
     #add-product,
     #edit,
     #instructions {
+        margin-top: 160px;
         margin-left: 0px;
     }
     
@@ -262,7 +263,8 @@ footer {
     }
 
     #products{
-        margin-left: -12px;
+        margin-left: 0px;
+        margin-top: 160px;
     }
 
     .add-btn{
