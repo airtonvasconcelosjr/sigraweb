@@ -236,13 +236,19 @@ function updateProduct(index) {
     };
 
     products[index] = updatedProduct;
+    alert("Produto editado com sucesso!");
     showProducts();
 }
 
 function deleteProduct(index) {
-    products.splice(index, 1);
-    showProducts();
+    const confirmation = confirm("Tem certeza de que deseja excluir este produto?");
+    if (confirmation) {
+        products.splice(index, 1);
+        showProducts();
+        alert("Produto excluído com sucesso!");
+    }
 }
+
 
 // Obtém o elemento com o id "year"
 const yearElement = document.getElementById("year");
