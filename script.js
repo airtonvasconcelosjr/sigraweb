@@ -82,6 +82,7 @@ function renderProductTable() {
     saveProducts(); // Salvar produtos no localStorage
 }
 
+// Form de adicionar
 function addProductForm() {
     content.innerHTML = `
     <div id="add-product">
@@ -106,6 +107,7 @@ function addProductForm() {
     `;
 }
 
+// Funções para adicionar
 function addProduct() {
     const fabricante = document.getElementById("fabricante").value;
     const codigo = document.getElementById("codigo").value;
@@ -159,24 +161,23 @@ function validateProductForm() {
     // Verificações
     if (fabricante.length < 3) {
         alert("O fabricante deve ter pelo menos 3 caracteres.");
-        return false; // Impede o envio do formulário
+        return false; 
     }
 
     if (descricao.length < 3) {
         alert("A descrição deve ter pelo menos 3 caracteres.");
-        return false; // Impede o envio do formulário
+        return false; 
     }
 
     if (isNaN(pesoLiquido) || isNaN(pesoBruto) || isNaN(valor)) {
         alert("Os campos numéricos devem conter apenas números.");
-        return false; // Impede o envio do formulário
+        return false; 
     }
 
-    return true; // Permite o envio do formulário
+    return true; 
 }
 
-
-
+ // Função de edição
 function editProductForm(index) {
     content.innerHTML = `
     <div id="edit">
@@ -252,4 +253,6 @@ const currentYear = new Date().getFullYear();
 // Define o ano atual no elemento
 yearElement.textContent = currentYear;
 
-showProducts();
+
+//Define a página inicial.
+showInstructions();
